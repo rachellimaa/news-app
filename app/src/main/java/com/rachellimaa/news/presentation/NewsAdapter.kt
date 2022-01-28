@@ -1,4 +1,4 @@
-package com.rachellimaa.news.ui
+package com.rachellimaa.news.presentation
 
 import android.view.LayoutInflater
 import android.view.View

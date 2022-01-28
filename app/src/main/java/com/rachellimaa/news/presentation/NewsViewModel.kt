@@ -1,4 +1,4 @@
-package com.rachellimaa.news.ui
+package com.rachellimaa.news.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.rachellimaa.news.data.model.Article
 import com.rachellimaa.news.data.model.NewsResult
 import com.rachellimaa.news.data.repository.INewsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewsViewModel(
+@HiltViewModel
+class NewsViewModel @Inject constructor(
     private val newsRepository: INewsRepository
 ) : ViewModel() {
 
@@ -24,11 +27,11 @@ class NewsViewModel(
             }
             is NewsResult.ApiError -> {
                 if (newsResult.code == 401) {
-                    // Show screen error
+                    println("ApiError")
                 }
             }
             is NewsResult.UnknownError -> {
-                // Show toast
+                println("UnknownError")
             }
         }
     }

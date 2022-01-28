@@ -1,16 +1,17 @@
 package com.rachellimaa.news.data.repository
 
 import com.haroldadmin.cnradapter.NetworkResponse
-import com.rachellimaa.news.data.NewsApiClient
+import com.rachellimaa.news.data.INewsApiClient
 import com.rachellimaa.news.data.model.NewsResult
 import com.rachellimaa.news.data.repository.api.INewsApiDataSource
+import javax.inject.Inject
 
-class NewsRetrofitApiDataSource(
-    private val newsApiClient: NewsApiClient
+class NewsRetrofitApiDataSource @Inject constructor(
+    private val INewsApiClient: INewsApiClient
 ) : INewsApiDataSource {
 
     override suspend fun fetchNews(): NewsResult  {
-        return when (val newsResponse = newsApiClient.getNews()) {
+        return when (val newsResponse = INewsApiClient.getNews()) {
             is NetworkResponse.Success -> {
                 val articles = newsResponse.body.articles
                 NewsResult.Success(articles)

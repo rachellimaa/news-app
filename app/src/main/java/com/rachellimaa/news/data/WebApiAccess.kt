@@ -5,7 +5,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 
 object WebApiAccess {
-    val newsApi : NewsApiClient by lazy {
+    val I_NEWS_API : INewsApiClient by lazy {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://newsapi.org/v2/")
@@ -13,6 +13,6 @@ object WebApiAccess {
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .build()
 
-        return@lazy retrofit.create(NewsApiClient::class.java)
+        return@lazy retrofit.create(INewsApiClient::class.java)
     }
 }

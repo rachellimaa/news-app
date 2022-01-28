@@ -5,9 +5,12 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.rachellimaa.news.data.model.NewsResponse
 import com.rachellimaa.news.data.model.NewsResult
+import javax.inject.Inject
 import kotlin.coroutines.suspendCoroutine
 
-class NewsFANApiDataSource : INewsApiDataSource {
+// Using fast android network
+
+class NewsFANApiDataSource @Inject constructor(): INewsApiDataSource {
 
     override suspend fun fetchNews(): NewsResult {
         return suspendCoroutine { continuation ->
@@ -31,6 +34,7 @@ class NewsFANApiDataSource : INewsApiDataSource {
         }
     }
 
+    // Get Key in https://newsapi.org/
     companion object {
         private const val NEWS_API_KEY = ""
     }

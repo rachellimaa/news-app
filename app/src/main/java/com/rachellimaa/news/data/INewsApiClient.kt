@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-interface NewsApiClient {
+interface INewsApiClient {
 
     @GET("top-headlines?country=br")
     suspend fun getNews(
@@ -15,6 +15,7 @@ interface NewsApiClient {
         @Query("apiKey") apiKey: String = NEWS_API_KEY
     ): NetworkResponse<NewsResponse, ErrorResponse>
 
+    // Get Key in https://newsapi.org/
     companion object {
        private const val NEWS_API_KEY = ""
     }

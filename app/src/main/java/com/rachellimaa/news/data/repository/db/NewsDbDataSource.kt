@@ -1,4 +1,6 @@
 package com.rachellimaa.news.data.repository.db
 
-class NewsDbDataSource {
+import javax.inject.Inject
+
+class NewsDbDataSource @Inject constructor() {
 }
